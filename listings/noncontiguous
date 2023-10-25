@@ -1,0 +1,11 @@
+for (i = 0; i < NELEM; i++) buf[i] = rank + 0.1*i; // Fill buffer
+MPI_Datatype vec_type;
+MPI_Type_vector(NELEM, 1, size, MPI_DOUBLE, &vec_type); // Create vector type
+MPI_Type_commit(&vec_type);
+disp = rank*sizeof(double);
+// Compute offset (in bytes)
+MPI_File_set_view(fh, disp, MPI_DOUBLE, vec_type, "native", MPI_INFO_NULL);
+// Set view
+MPI_File_write(fh, buf, NELEM, MPI_DOUBLE, MPI_STATUS_IGNORE);
+// Write
+MPI_Type_free(&vec_type);

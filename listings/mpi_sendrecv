@@ -1,0 +1,1 @@
+int MPI_Sendrecv(void* sendbuf, int sendcount, MPI_Datatype senddatatype, int dest, int sendtag, void* recvbuf, int recvcount, MPI_Datatype recvdatatye, int src, int recvtag, MPI_Comm comm, MPI_Status * status);

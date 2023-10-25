@@ -1,0 +1,1 @@
+int MPI_Type_create_subarray(int ndims, const int sizes[], const int subsizes[], const int starts[], int order, MPI_Datatype oldtype, MPI_Datatype * newtype)

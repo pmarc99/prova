@@ -1,0 +1,1 @@
+int MPI_Type_create_struct(int nblocks, const int array_of_blocklen[], const MPI_Aint array_of_displacements [], const MPI_Datatype array_of_types[], MPI_Datatype *newtype)

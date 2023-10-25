@@ -1,0 +1,7 @@
+MPI_Datatype new_type;	//datatype name declaration
+...
+MPI_Type_XXX(..., &new_type); //construct the datatype
+MPI_Type_commit (&new_type); //Allocate
+// ... Some work here
+...
+MPI_Type_free(&new_type); //remove

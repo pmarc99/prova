@@ -1,0 +1,17 @@
+typedef struct st {float x; float y; int type; } ST;
+
+int nblocks = 2, blocklen[] = {2, 1};
+oldtypes[] = {MPI_FLOAT, MPI_INT};
+MPI_Aint displ[] = {0, 8}; // Manual setting (not very recommended)
+MPI_Datatype MPI_ST;	 
+ST s;
+//...
+MPI_Get_address(&(s.x),&displ[0]);
+MPI_Get_address(&(s.type), &displ[1]);
+displ[1] -= displ[0]; displ[0] -= displ[0];
+MPI_Type_create_struct (nblocks, blocklen, displ, oldtypes, &MPI_ST);
+MPI_Type_commit(&MPI_ST);
+s.x = ... // Initialize record here
+int dst = 0, src = 1;
+if (rank == src) MPI_Send (&s, 1, MPI_ST, dst, 10, MPI_COMM_WORLD);
+else MPI_Recv (&s, 1, MPI_ST, src, 10, MPI_COMM_WORLD, MPI_STATUS_IGNORE);

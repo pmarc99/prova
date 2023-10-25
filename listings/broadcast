@@ -1,0 +1,2 @@
+int MPI_Bcast (void * data, int count, MPI_Datatype datatype,
+    int root, MPI_Comm communicator)

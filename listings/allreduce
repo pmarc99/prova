@@ -1,0 +1,1 @@
+int MPI_Allreduce( void* sendbuf, void* recvbuffer, int count, MPI_Datatype datatype, MPI_Op op, MPI_Comm communicator)
